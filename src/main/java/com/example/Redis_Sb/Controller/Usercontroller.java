@@ -2,8 +2,6 @@ package com.example.Redis_Sb.Controller;
 
 import com.example.Redis_Sb.Model.User;
 import com.example.Redis_Sb.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +31,13 @@ public class Usercontroller {
     }
 
     @PostMapping
-    public User save(@RequestBody User user){
-        return userService.saveUser(user);
+    public ResponseEntity<String> save(@RequestBody User user){
+
+       // public User save(@RequestBody User user){
+            // return userService.saveUser(user)  //returns json response with User type
+
+        User uid=userService.saveUser(user);
+        return ResponseEntity.ok("User with id "+uid.getId()+" Added Successfully");
     }
 
 
