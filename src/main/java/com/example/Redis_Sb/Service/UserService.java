@@ -1,6 +1,5 @@
 package com.example.Redis_Sb.Service;
 
-import com.example.Redis_Sb.Exceptions.UserNotFoundException;
 import com.example.Redis_Sb.Model.User;
 import com.example.Redis_Sb.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +28,7 @@ public class UserService {
     @Cacheable(value = "users", key = "#id")
     public User getUser(Long id){
         System.out.println("retrieving user by id from mysql");
-      // return userRepo.findById(id).orElse(null);
-        return userRepo.findById(id)
-                .orElseThrow(()-> new UserNotFoundException("user not found with id "+id));
+       return userRepo.findById(id).orElse(null);
     }
 
     @Cacheable(value = "users", key = "'all'")
