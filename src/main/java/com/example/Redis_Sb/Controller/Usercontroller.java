@@ -3,6 +3,8 @@ package com.example.Redis_Sb.Controller;
 import com.example.Redis_Sb.Model.User;
 import com.example.Redis_Sb.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,9 +39,9 @@ public class Usercontroller {
 
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable Long id){
+    public ResponseEntity<String> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
-        return "deleted";
+        return ResponseEntity.ok("User deleted Successfully");
     }
 
 }
