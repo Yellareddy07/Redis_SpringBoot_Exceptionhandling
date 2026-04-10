@@ -20,21 +20,24 @@ public class Usercontroller {
         this.userService = userService;
     }
 
+
     @GetMapping("/{id}")
     public User getUser(@PathVariable Long id){
         return userService.getUser(id);
     }
+
 
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
+
     @PostMapping
     public ResponseEntity<String> save(@RequestBody User user){
 
        // public User save(@RequestBody User user){
-            // return userService.saveUser(user)  //returns json response with User type
+            // return userService.saveUser(user)  //returns JSON response with User type
 
         User uid=userService.saveUser(user);
         return ResponseEntity.ok("User with id "+uid.getId()+" Added Successfully");

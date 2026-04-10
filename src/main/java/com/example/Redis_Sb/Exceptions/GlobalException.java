@@ -13,7 +13,7 @@ public class GlobalException {
 
     //handle specific exception
     @ExceptionHandler(UserNotFoundException.class)
-    //gives you structured json response
+    //gives you structured JSON response
     public ResponseEntity<ErrorResponse> UserNotFoundException(UserNotFoundException ex){
 
         //before adding error response class ==> gives you the plain text(string) in output
@@ -21,7 +21,7 @@ public class GlobalException {
         //return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
 
 
-        //after adding error response class ==> gives you the structured json type response
+        //after adding error response class ==> gives you the structured JSON type response
         ErrorResponse error=new ErrorResponse(
                 ex.getMessage(),
                 HttpStatus.NOT_FOUND.value(),
@@ -36,7 +36,7 @@ public class GlobalException {
 
     //handle all exceptions
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> Exception(Exception ex){
+    public ResponseEntity<String> Exception(Exception e){
         return new ResponseEntity<>("Something went wrong",HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

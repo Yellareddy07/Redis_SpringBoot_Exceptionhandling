@@ -33,6 +33,7 @@ public class UserService {
                .orElseThrow(()->new UserNotFoundException("user not found with id "+id));
     }
 
+
     @Cacheable(value = "users", key = "'all'")
     public List<User> getAllUsers() {
         System.out.println("Fetching ALL users from DB...");
